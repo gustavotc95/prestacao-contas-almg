@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import { Fornecedores } from '../services/fornecedores';
+import { Contratos } from '../services/contratos';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,8 @@ export class HomeComponent implements OnInit {
 
   fornecedores: Fornecedores[];
   fornecedoresName: Array<string> = [];
+
+  contratos: Contratos[];
 
   contratosForm = new FormGroup({
     cod: new FormControl(''),
@@ -39,7 +42,6 @@ export class HomeComponent implements OnInit {
         });
       }
     });
-    console.log(this.fornecedoresName);
   }
 
   listFornecedores(): void {
@@ -52,12 +54,27 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  listContratos(query: string) {
+    this.apiService.getContratos(query).subscribe(
+      res => {
+        console.log('res');
+      },
+      err => {
+        console.log('teste');
+        console.log(err);
+      }
+    );
+  }
+
+
   ngOnInit() {
     this.listFornecedores();
   }
 
   onSubmit() {
-    console.log(this.contratosForm.value);
+    // tslint:disable-next-line: max-line-length
+    const query = `?cod=${this.contratosForm.value.cod}&ano=${this.contratosForm.value.ano}&dota=${this.contratosForm.value.dota}&tipo=${this.contratosForm.value.tipo}&forn=${this.contratosForm.value.forn}&obj=${this.contratosForm.value.obj}&numLic=${this.contratosForm.value.numLic}&anoLic=${this.contratosForm.value.anoLic}&modal=${this.contratosForm.value.modal}&numModalCto=${this.contratosForm.value.numModalCto}&anoModalCto=${this.contratosForm.value.anoModalCto}`;
+    this.listContratos(query);
   }
 
 }

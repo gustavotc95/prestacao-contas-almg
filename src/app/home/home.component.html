@@ -3,24 +3,24 @@
     <img src="/assets/img/logo.png" alt="Logo da ALMG">
   </div>
 
-  <form class="form-section" [formGroup]="contratosForm" (submit)="onSubmit(contratosForm)">
+  <form class="form-section" [formGroup]="contratosForm" (ngSubmit)="onSubmit(contratosForm)">
     <div class="form-title">Pesquisar contratos</div>
 
     <div class="form-row">
       <div class="form-group col-md-4">
-        <input type="number" class="form-control" name="cod" id="cod" placeholder="Código do contrato"/>
+        <input type="number" class="form-control" name="cod" formControlName="cod" placeholder="Código do contrato"/>
       </div>
 
       <div class="form-group col-md-4">
-        <input type="number" class="form-control" name="ano" id="ano" placeholder="Ano do contrato"/>
+        <input type="number" class="form-control" name="ano" formControlName="ano" placeholder="Ano do contrato"/>
       </div>
 
       <div class="form-group col-md-4">
-        <input type="text" class="form-control" name="dota" id="dota" placeholder="Dotação orçamentária"/>
+        <input type="text" class="form-control" name="dota" formControlName="dota" placeholder="Dotação orçamentária"/>
       </div>
 
       <div class="form-group col-md-6">
-        <select class="form-control" name="tipo" id="tipo">
+        <select class="form-control" name="tipo" formControlName="tipo">
           <option value="">Tipo de contrato</option>
           <option value="Contrato">Contrato</option>
           <option value="Convênio">Convênio</option>
@@ -28,34 +28,34 @@
       </div>
 
       <div class="form-group col-md-6">
-        <select class="form-control" name="forn" id="forn">
+        <select class="form-control" name="forn" formControlName="forn">
           <option value="">Nome do fornecedor</option>
           <option *ngFor="let fornecedor of fornecedoresName" [value]="fornecedor">{{fornecedor}}</option>
         </select>
       </div>
 
       <div class="form-group col-md-4">
-        <input type="text" class="form-control" name="obj" id="obj" placeholder="Objeto do contrato"/>
+        <input type="text" class="form-control" name="obj" formControlName="obj" placeholder="Objeto do contrato"/>
       </div>
 
       <div class="form-group col-md-4">
-        <input type="number" class="form-control" name="numLic" id="numLic" placeholder="Número do processo licitatório"/>
+        <input type="number" class="form-control" name="numLic" formControlName="numLic" placeholder="Número do processo licitatório"/>
       </div>
 
       <div class="form-group col-md-4">
-        <input type="number" class="form-control" name="anoLic" id="anoLic" placeholder="Ano do processo licitatório"/>
+        <input type="number" class="form-control" name="anoLic" formControlName="anoLic" placeholder="Ano do processo licitatório"/>
       </div>
 
       <div class="form-group col-md-4">
-        <input type="text" class="form-control" name="modal" id="modal" placeholder="Modalidade do contrato"/>
+        <input type="text" class="form-control" name="modal" formControlName="modal" placeholder="Modalidade do contrato"/>
       </div>
 
       <div class="form-group col-md-4">
-        <input type="number" class="form-control" name="numModalCto" id="numModalCto" placeholder="Número da modalidade de contrato"/>
+        <input type="number" class="form-control" name="numModalCto" formControlName="numModalCto" placeholder="Número da modalidade de contrato"/>
       </div>
 
       <div class="form-group col-md-4">
-        <input type="number" class="form-control" name="anoModalCto" id="anoModalCto" placeholder="Ano da modalidade de contrato"/>
+        <input type="number" class="form-control" name="anoModalCto" formControlName="anoModalCto" placeholder="Ano da modalidade de contrato"/>
       </div>
 
       <div class="form-group col-md-12 d-md-flex">
